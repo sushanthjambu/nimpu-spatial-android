@@ -1,0 +1,33 @@
+# Build outputs
+/build/
+/sample/build/
+/sdk/build/
+*.apk
+*.aab
+*.ap_
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+.kotlin/
+
+# Local machine config
+local.properties
+
+# Signing keys and secrets
+*.jks
+*.keystore
+*.pem
+
+# OS files
+.DS_Store
+Thumbs.db

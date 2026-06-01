@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="title desc">
+  <title id="title">Creator and resolver flow</title>
+  <desc id="desc">A creator saves an exact physical pin, Nimpu Spatial Cloud stores it for the project, and a resolver later uses the SDK to find the same spot.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#eef6f3"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1d3557" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f6f73"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="460" rx="22" fill="#fbfcfd"/>
+  <rect x="34" y="34" width="1132" height="392" rx="20" fill="url(#panel)" stroke="#d8e4e1"/>
+
+  <g transform="translate(70 78)" filter="url(#shadow)">
+    <rect width="300" height="304" rx="16" fill="#ffffff" stroke="#d3dfdc"/>
+    <text x="28" y="42" fill="#16323f" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700">1. Create Pin</text>
+    <text x="28" y="74" fill="#53666d" font-family="Inter, Arial, sans-serif" font-size="15">A user saves the exact door,</text>
+    <text x="28" y="96" fill="#53666d" font-family="Inter, Arial, sans-serif" font-size="15">counter, or drop-off spot.</text>
+
+    <rect x="38" y="120" width="104" height="140" rx="18" fill="#173947"/>
+    <rect x="48" y="134" width="84" height="112" rx="11" fill="#dff3ef"/>
+    <circle cx="90" cy="252" r="5" fill="#9fb9b4"/>
+
+    <rect x="188" y="148" width="72" height="86" rx="4" fill="#f5f0e8" stroke="#c7bfae"/>
+    <circle cx="224" cy="203" r="6" fill="#ad8453"/>
+    <path d="M213 139 c0 -23 34 -23 34 0 c0 21 -17 39 -17 39 s-17 -18 -17 -39z" fill="#cf3f43"/>
+    <circle cx="230" cy="139" r="6" fill="#ffffff"/>
+    <rect x="0" y="268" width="300" height="36" rx="0" fill="#ffffff"/>
+    <text x="28" y="291" fill="#2f6f73" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Short camera scan</text>
+  </g>
+
+  <line x1="394" y1="230" x2="454" y2="230" stroke="#2f6f73" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g transform="translate(470 78)" filter="url(#shadow)">
+    <rect width="300" height="304" rx="16" fill="#ffffff" stroke="#d3dfdc"/>
+    <text x="28" y="42" fill="#16323f" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700">2. Store Pin</text>
+    <text x="28" y="74" fill="#53666d" font-family="Inter, Arial, sans-serif" font-size="15">Nimpu Spatial Cloud keeps the pin</text>
+    <text x="28" y="96" fill="#53666d" font-family="Inter, Arial, sans-serif" font-size="15">available to the same project.</text>
+
+    <path d="M78 232 h140 c30 0 49 -17 49 -44 c0 -23 -18 -41 -42 -43 c-10 -31 -38 -50 -70 -50 c-37 0 -67 25 -74 59 c-27 5 -46 27 -46 55 c0 18 15 23 43 23z" fill="#dff3ef" stroke="#84aaa4" stroke-width="3"/>
+    <rect x="129" y="164" width="48" height="38" rx="7" fill="#ffffff" stroke="#2f6f73" stroke-width="3"/>
+    <path d="M139 164 v-15 c0 -15 11 -25 24 -25 s24 10 24 25 v15" fill="none" stroke="#2f6f73" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="153" cy="184" r="4" fill="#2f6f73"/>
+    <rect x="0" y="268" width="300" height="36" rx="0" fill="#ffffff"/>
+    <text x="68" y="291" fill="#2f6f73" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Project API key enabled</text>
+  </g>
+
+  <line x1="794" y1="230" x2="854" y2="230" stroke="#2f6f73" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <g transform="translate(870 78)" filter="url(#shadow)">
+    <rect width="300" height="304" rx="16" fill="#ffffff" stroke="#d3dfdc"/>
+    <text x="28" y="42" fill="#16323f" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700">3. Resolve Pin</text>
+    <text x="28" y="74" fill="#53666d" font-family="Inter, Arial, sans-serif" font-size="15">Another user opens the pin</text>
+    <text x="28" y="96" fill="#53666d" font-family="Inter, Arial, sans-serif" font-size="15">and sees guidance to the spot.</text>
+
+    <rect x="38" y="120" width="104" height="140" rx="18" fill="#173947"/>
+    <rect x="48" y="134" width="84" height="112" rx="11" fill="#e7f2ff"/>
+    <path d="M81 187 c0 -24 36 -24 36 0 c0 22 -18 42 -18 42 s-18 -20 -18 -42z" fill="#cf3f43"/>
+    <circle cx="99" cy="187" r="7" fill="#ffffff"/>
+    <circle cx="90" cy="252" r="5" fill="#9fb9b4"/>
+
+    <rect x="196" y="148" width="70" height="86" rx="4" fill="#f5f0e8" stroke="#c7bfae"/>
+    <circle cx="231" cy="203" r="6" fill="#ad8453"/>
+    <path d="M176 238 h90" stroke="#8b9f9a" stroke-width="4" stroke-linecap="round"/>
+    <rect x="0" y="268" width="300" height="36" rx="0" fill="#ffffff"/>
+    <text x="28" y="291" fill="#2f6f73" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Final AR pin at the place</text>
+  </g>
+</svg>

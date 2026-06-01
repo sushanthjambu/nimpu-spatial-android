@@ -1,0 +1,8 @@
+# Copy this file to local.properties and fill in your Nimpu Spatial portal key.
+# local.properties is ignored by git.
+
+NIMPU_API_KEY=nsk_your_project_api_key_here
+
+# Recommended for the sample app. To use this, configure ARCore Geospatial API
+# access for the sample package/signing certificate in your Google Cloud project.
+NIMPU_ENABLE_GEOSPATIAL_GUIDANCE=true

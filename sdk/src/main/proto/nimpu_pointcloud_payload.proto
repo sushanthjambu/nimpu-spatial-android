@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package nimpu.spatial.payload.v1;
+
+option java_package = "com.nimpu.spatial.proto";
+option java_multiple_files = true;
+option optimize_for = LITE_RUNTIME;
+
+message PointCloudPayloadV1 {
+  uint32 schema_version = 1;
+  uint32 algorithm_id = 2;
+  uint32 descriptor_size = 3;
+  int64 timestamp_ms = 4;
+
+  repeated float pin_pose = 5;
+  repeated float camera_intrinsics = 6;
+
+  uint32 point_count = 7;
+  bytes points3d_f32_le = 8;
+  bytes descriptors = 9;
+
+  GeospatialMetadata geospatial = 10;
+  CaptureMetadata capture = 11;
+}
+
+message GeospatialMetadata {
+  double latitude = 1;
+  double longitude = 2;
+  optional double altitude = 3;
+  optional string floor_label = 4;
+  optional double heading_degrees = 5;
+  optional double horizontal_accuracy_meters = 6;
+  optional double vertical_accuracy_meters = 7;
+  optional double heading_accuracy_degrees = 8;
+  bool reliable_localization = 9;
+}
+
+message CaptureMetadata {
+  uint32 covered_sectors = 1;
+  uint32 point_count = 2;
+  uint32 schema_version = 3;
+}
