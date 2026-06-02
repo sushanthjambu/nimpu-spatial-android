@@ -106,6 +106,10 @@ dependencies {
 
 Do not commit `local.properties`, API keys, signing keys, or private app credentials. Share Log output is intended for support/debugging and should not include raw pin data, full signed URLs, API keys, or user PII.
 
+## Contact
+
+For integration questions, support, or licensing terms, contact jambusushanth@gmail.com.
+
 ## License
 
 The Kotlin SDK wrapper source, sample app source, Gradle configuration, and documentation are licensed under Apache License 2.0.
