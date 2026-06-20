@@ -1,6 +1,7 @@
 package com.nimpu.spatial.sdk
 
 import android.content.Context
+import android.net.Uri
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -17,6 +18,7 @@ object NimpuSpatialSdk {
     private const val TAG = "NimpuSdk"
     private const val SDK_VERSION = "0.1.0"
     internal const val NIMPU_CLOUD_BASE_URL = "https://api.spatial.nimpu.in"
+    private const val NIMPU_SHARE_BASE_URL = "https://spatial.nimpu.in"
 
     @Volatile
     private var config: NimpuSpatialConfig = NimpuSpatialConfig()
@@ -58,6 +60,22 @@ object NimpuSpatialSdk {
     }
 
     fun currentConfig(): NimpuSpatialConfig = config
+
+    fun shareUrlForCloudPin(cloudPinId: String): String {
+        val trimmedCloudPinId = cloudPinId.trim()
+        require(trimmedCloudPinId.isNotBlank()) { "cloudPinId is required." }
+        return Uri.parse(NIMPU_SHARE_BASE_URL)
+            .buildUpon()
+            .appendPath("pins")
+            .appendPath(trimmedCloudPinId)
+            .build()
+            .toString()
+    }
+
+    fun shareUrlForPin(pin: NimpuPin): String? {
+        val cloudPinId = pin.cloudPinId?.takeIf { it.isNotBlank() } ?: return null
+        return shareUrlForCloudPin(cloudPinId)
+    }
 
     fun listLocalPins(context: Context): List<NimpuPin> {
         val pins = PointCloudPayload.listSavedPins(context).map { it.toNimpuPin(isLocalRecord = true) }

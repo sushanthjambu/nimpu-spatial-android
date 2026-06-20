@@ -77,6 +77,29 @@ NimpuSpatialSdk.listCloudPins { result ->
 
 Cloud pin list results are intended for app-owned picker UI. The SDK does not own the picker dialog.
 
+## Share URLs
+
+Cloud pins can be represented by public Nimpu Spatial URLs that are safe to pass through Android
+share targets:
+
+```kotlin
+val url = NimpuSpatialSdk.shareUrlForCloudPin(cloudPinId)
+val maybeUrl = NimpuSpatialSdk.shareUrlForPin(pin)
+```
+
+`shareUrlForCloudPin("pin_abc")` returns:
+
+```text
+https://spatial.nimpu.in/pins/pin_abc
+```
+
+`shareUrlForPin(pin)` returns `null` when the pin is local-only and has no cloud id. Upload local
+pins before sharing them.
+
+Share URLs contain only the cloud pin id. They do not include payload bytes, API keys, entitlement
+tokens, or signed payload download URLs. Apps should still prepare the shared pin through the normal
+resolve session flow.
+
 ## Resolve Session Flow
 
 Prepare a selected cloud pin before starting Resolve:
