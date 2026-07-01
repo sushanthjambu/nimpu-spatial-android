@@ -15,6 +15,7 @@ import com.google.ar.core.TrackingState
 import com.google.ar.core.exceptions.CameraNotAvailableException
 import com.google.ar.core.exceptions.NotYetAvailableException
 import com.google.ar.core.exceptions.SessionPausedException
+import com.google.ar.core.exceptions.TextureNotSetException
 import com.nimpu.spatial.sdk.CreateDiagnostics
 import com.nimpu.spatial.sdk.CreatePinPhase
 import com.nimpu.spatial.sdk.CreatePinState
@@ -80,6 +81,10 @@ class ArRenderer(
         private set
 
     var session: Session? = null
+        set(value) {
+            field = value
+            cameraTextureAttached = false
+        }
     @Volatile var displayRotation: Int = 0
     @Volatile var paused: Boolean = true
 
@@ -92,6 +97,7 @@ class ArRenderer(
     var resolveSession: ResolveSession? = null
 
     private var cameraTextureId = -1
+    @Volatile private var cameraTextureAttached = false
     private var shaderProgram = 0
     private var planeNotified = false
     private var viewportWidth = 0
@@ -176,6 +182,7 @@ class ArRenderer(
         GLES20.glTexParameteri(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR)
 
         session?.setCameraTextureName(cameraTextureId)
+        cameraTextureAttached = session != null
         shaderProgram = createProgram(VERTEX_SHADER, FRAGMENT_SHADER)
         initPinRenderer()
         publishUiState(
@@ -206,6 +213,14 @@ class ArRenderer(
             PerfLog.end("onDrawFrame")
             return
         }
+        if (cameraTextureId == -1) {
+            PerfLog.end("onDrawFrame")
+            return
+        }
+        if (!cameraTextureAttached) {
+            sess.setCameraTextureName(cameraTextureId)
+            cameraTextureAttached = true
+        }
 
         if (viewportChanged) {
             sess.setDisplayGeometry(displayRotation, viewportWidth, viewportHeight)
@@ -218,6 +233,10 @@ class ArRenderer(
             PerfLog.end("onDrawFrame")
             return
         } catch (e: SessionPausedException) {
+            PerfLog.end("onDrawFrame")
+            return
+        } catch (e: TextureNotSetException) {
+            cameraTextureAttached = false
             PerfLog.end("onDrawFrame")
             return
         }
